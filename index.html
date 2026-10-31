@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>November 2026 Challenge Certificate</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080a0f;color:#fff;font-family:Arial,Helvetica,sans-serif}
+.app{max-width:1150px;margin:auto;padding:24px 12px 60px}
+h1{font:700 clamp(32px,7vw,55px) Georgia,serif;color:#e5bd61;letter-spacing:2px;text-align:center;margin:5px 0}
+.header{text-align:center;padding:10px 0 25px}
+.header p{color:#aaa;margin:8px 0}
+.panel{background:linear-gradient(145deg,#191b21,#0e1015);border:1px solid #343741;border-radius:18px;padding:20px;margin-bottom:20px;box-shadow:0 15px 40px #0008}
+.title{text-align:center;color:#e4ba5b;font:700 18px Georgia,serif;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.card{background:#090b10;border:1px solid #30333b;border-radius:11px;padding:14px 7px;text-align:center}
+.card strong{display:block;color:#e5bd61}.card span{display:block;color:#bbb;font-size:12px;margin-top:5px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{display:block;color:#d8b45e;font-size:13px;font-weight:bold;margin-bottom:7px}
+input,select{width:100%;height:47px;padding:0 13px;border-radius:8px;border:1px solid #454852;background:#080a0f;color:#fff;outline:none;font-size:15px}
+.details,.status{margin-top:17px;padding:15px;border-radius:11px;text-align:center}
+.details{display:none;background:#0b0d12;border:1px solid #343740}
+.details b{display:block;color:#e5bd61;font-size:20px}.details span{display:block;color:#bbb;font-size:13px;margin-top:5px}
+.status{font-weight:bold}.locked{background:#30191a;border:1px solid #713536;color:#ffb4b4}.unlocked{background:#18301e;border:1px solid #397747;color:#a9efb7}
+.countdown{margin-top:8px;color:#fff;font:20px monospace}
+.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+button{min-height:45px;padding:0 18px;border:0;border-radius:8px;cursor:pointer;font-weight:bold}
+.gold{background:linear-gradient(135deg,#f1d27d,#b47b1d);color:#111}.white{background:#eee;color:#111}.red{background:#963d35;color:#fff}.dark{background:#292c33;color:#fff;border:1px solid #555}
+button:disabled{opacity:.3;cursor:not-allowed}
+.preview-title{text-align:center;color:#e2b95b;font:19px Georgia,serif;margin:30px 0 12px}
+.preview{overflow:auto;background:#050609;border:1px solid #292c33;border-radius:16px;padding:15px}
+.certificate{position:relative;width:1120px;height:792px;margin:auto;overflow:hidden;color:#20170b;background:radial-gradient(circle,#fff9e9,#f0ddb3 58%,#d8bc82);box-shadow:0 20px 70px #000b}
+.certificate:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.13;background:repeating-linear-gradient(0deg,#50320a2b 0,#50320a2b 1px,transparent 1px,transparent 5px)}
+.border{position:absolute;z-index:2}.b1{inset:14px;border:6px solid #16110a}.b2{inset:24px;border:3px solid #c3953b}.b3{inset:33px;border:1px solid #6d501d}.b4{inset:41px;border:1px solid #96691c77}
+.head{position:absolute;z-index:5;top:50px;left:170px;right:170px;height:120px;background:linear-gradient(135deg,#080706,#30230d,#0b0906);border:3px solid #d2a64d;text-align:center;padding-top:15px;clip-path:polygon(4% 0,96% 0,100% 50%,96% 100%,4% 100%,0 50%)}
+.head h2{margin:0;color:#e5bd61;font:52px Georgia,serif;letter-spacing:4px}.head div{color:#f2dfb5;font-size:14px;letter-spacing:4px;margin-top:4px}
+.main-title{position:absolute;top:193px;width:100%;z-index:5;text-align:center;font:700 41px Georgia,serif}
+.goldline{position:absolute;top:250px;left:35%;right:35%;height:3px;background:#ae7b25;z-index:5}
+.certify{position:absolute;top:278px;width:100%;z-index:5;text-align:center;font:italic 18px Georgia,serif}
+.name{position:absolute;top:307px;width:100%;padding:0 120px;z-index:5;text-align:center;font:700 38px Georgia,serif;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nameline{position:absolute;top:358px;left:27%;right:27%;z-index:5;border-bottom:2px solid #987028}
+.description{position:absolute;top:378px;left:120px;right:120px;z-index:5;text-align:center;font:17px/2 Georgia,serif}
+.cat{display:inline-block;padding:3px 20px;margin:0 7px;background:#19140c;color:#e9c96f;border:2px solid #c09235;font-weight:bold;font-size:15px}
+.days{font-weight:bold;font-size:20px}
+.message{position:absolute;top:472px;left:180px;right:180px;z-index:5;text-align:center;font:italic 15px Georgia,serif;color:#4b3920}
+.seal{position:absolute;z-index:7;width:110px;height:110px;left:calc(50% - 55px);bottom:42px;border-radius:50%;border:7px double #f6dda0;background:radial-gradient(circle,#f0cf72,#bd8d2f 65%,#765015);display:flex;align-items:center;justify-content:center;text-align:center;font:700 18px/1.2 Georgia,serif;color:#251806}
+.date{position:absolute;left:65px;bottom:48px;width:210px;z-index:6;text-align:center;font-family:Georgia,serif}
+.signature{position:absolute;right:50px;bottom:43px;width:270px;z-index:6;text-align:center;font-family:Georgia,serif}
+.line{border-top:2px solid #392a17;padding-top:6px;font-size:11px;font-weight:bold}
+.sign{margin-bottom:-2px;font:30px "Brush Script MT",cursive}.auth{margin-top:10px;margin-bottom:-2px;font:29px "Brush Script MT",cursive}
+.number{position:absolute;bottom:17px;width:100%;z-index:7;text-align:center;font-size:8px;letter-spacing:2px;color:#614a24}
+@media(max-width:700px){.form{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.buttons{display:grid;grid-template-columns:1fr 1fr}.preview{padding:8px}}
+@media print{
+body{background:#fff}body *{visibility:hidden!important}.certificate,.certificate *{visibility:visible!important}
+.certificate{position:absolute;left:0;top:0;width:297mm;height:210mm;margin:0;box-shadow:none}
+.preview{padding:0;overflow:visible;border:0;background:#fff}@page{size:A4 landscape;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="header"><div style="color:#d9ae50;font-size:30px">✦</div><h1>NOVEMBER 2026</h1><p>Challenge Completion Certificate</p></div>
+
+<div class="panel">
+<div class="title">OFFICIAL CATEGORY CUT-OFF</div>
+<div class="grid">
+<div class="card"><strong>GENERAL</strong><span>30 Days</span></div>
+<div class="card"><strong>OBC</strong><span>28.5 Days</span></div>
+<div class="card"><strong>SC / ST</strong><span>17 Days</span></div>
+<div class="card"><strong>EWS / PWD</strong><span>5 Hours</span></div>
+</div>
+</div>
+
+<div class="panel">
+<div class="form">
+<div><label>PARTICIPANT NAME</label><input id="name" maxlength="50" placeholder="Enter full name"></div>
+<div><label>CATEGORY</label><select id="category"><option value="">Select category</option><option value="GENERAL">General</option><option value="OBC">OBC</option><option value="SC/ST">SC / ST</option><option value="EWS/PWD">EWS / PWD</option></select></div>
+</div>
+<div class="details" id="details"><b id="catName"></b><span id="catDays"></span><span id="catUnlock"></span></div>
+<div class="status locked" id="status">Select a category to check eligibility.</div>
+<div class="buttons">
+<button class="gold" id="generate">Generate Certificate</button>
+<button class="white" id="png" disabled>Download PNG</button>
+<button class="red" id="pdf" disabled>Download PDF</button>
+<button class="dark" id="print" disabled>Print Certificate</button>
+</div>
+</div>
+
+<div class="preview-title">CERTIFICATE PREVIEW</div>
+<div class="preview">
+<div class="certificate" id="certificate">
+<div class="border b1"></div><div class="border b2"></div><div class="border b3"></div><div class="border b4"></div>
+<div class="head"><h2>NOVEMBER 2026</h2><div>CHALLENGE COMPLETION</div></div>
+<div class="main-title">COMPLETION CERTIFICATE</div><div class="goldline"></div>
+<div class="certify">This is to certify that</div>
+<div class="name" id="certName">PARTICIPANT NAME</div><div class="nameline"></div>
+<div class="description">has successfully completed the November 2026 challenge in the <span class="cat" id="certCat">CATEGORY</span> category for <span class="days" id="certDays">0</span>.</div>
+<div class="message">Your dedication, discipline and commitment are truly commendable.</div>
+<div class="seal">2026<br>CERTIFIED</div>
+<div class="date"><div id="certDate">—</div><div class="line">CERTIFICATE DATE</div></div>
+<div class="signature"><div class="sign" id="personSign">Participant</div><div class="line">PERSON SIGNATURE</div><div class="auth">Santy</div><div class="line">AUTHORISED SIGNATORY</div></div>
+<div class="number" id="certNo">Certificate No. —</div>
+</div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+const rules={
+GENERAL:{label:"General",days:"30 days",ms:30*86400000},
+OBC:{label:"OBC",days:"28.5 days",ms:28.5*86400000},
+"SC/ST":{label:"SC / ST",days:"17 days",ms:17*86400000},
+"EWS/PWD":{label:"EWS / PWD",days:"5 hours",ms:5*3600000}
+};
+
+// 1 Nov 2026 00:00 IST = 31 Oct 2026 18:30 UTC
+const start=Date.UTC(2026,9,31,18,30,0);
+
+const $=id=>document.getElementById(id);
+const name=$("name"), category=$("category");
+
+function indiaDate(ts,only=false){
+return new Intl.DateTimeFormat("en-IN",{timeZone:"Asia/Kolkata",day:"2-digit",month:"long",year:"numeric",...(only?{}:{hour:"2-digit",minute:"2-digit",hour12:true})}).format(new Date(ts));
+}
+function cutoff(){return start+(rules[category.value]?.ms||0)}
+function countdown(ms){
+let s=Math.max(0,Math.floor(ms/1000)),d=Math.floor(s/86400);s%=86400;
+let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);s%=60;
+return `${String(d).padStart(2,"0")}d ${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}m ${String(s).padStart(2,"0")}s`;
+}
+function update(){
+const key=category.value;
+if(!key){
+$("details").style.display="none";$("status").className="status locked";
+$("status").textContent="Select a category to check eligibility.";
+$("png").disabled=$("pdf").disabled=$("print").disabled=true;
+$("certCat").textContent="CATEGORY";$("certDays").textContent="0";$("certDate").textContent="—";
+return;
+}
+const r=rules[key], c=cutoff(), unlocked=Date.now()>=c;
+$("details").style.display="block";
+$("catName").textContent=r.label;
+$("catDays").textContent="Cut-off: "+r.days;
+$("catUnlock").textContent="Unlocks: "+indiaDate(c)+" IST";
+$("certCat").textContent=r.label.toUpperCase();
+$("certDays").textContent=r.days;
+$("certDate").textContent=indiaDate(unlocked?Date.now():c,true);
+if(!unlocked){
+$("status").className="status locked";
+$("status").innerHTML=`🔒 Certificate locked<div class="countdown">${countdown(c-Date.now())}</div><div style="font-size:12px;margin-top:6px;color:#aaa">Unlocks ${indiaDate(c)} IST</div>`;
+$("png").disabled=$("pdf").disabled=$("print").disabled=true;
+}else{
+$("status").className="status unlocked";
+$("status").textContent="✓ Certificate unlocked. You are eligible for the "+r.label+" category.";
+$("png").disabled=$("pdf").disabled=$("print").disabled=false;
+}
+}
+function eligible(){
+if(!category.value){alert("Please select a category.");return false}
+if(!name.value.trim()){alert("Please enter the participant name.");return false}
+if(Date.now()<cutoff()){alert("This certificate is still locked.\n\nUnlocks: "+indiaDate(cutoff())+" IST");update();return false}
+return true;
+}
+function updateName(){
+$("certName").textContent=name.value.trim()?name.value.trim().toUpperCase():"PARTICIPANT NAME";
+$("personSign").textContent=name.value.trim()||"Participant";
+}
+function newNo(){return "NOV26-"+Math.random().toString(36).slice(2,8).toUpperCase()}
+$("certNo").textContent="Certificate No. "+newNo();
+
+name.addEventListener("input",updateName);
+category.addEventListener("change",update);
+$("generate").onclick=()=>{if(eligible()){ $("certNo").textContent="Certificate No. "+newNo(); updateName(); update(); alert("Certificate generated successfully.");}};
+$("png").onclick=async()=>{
+if(!eligible())return;
+const canvas=await html2canvas($("certificate"),{scale:4,useCORS:true,backgroundColor:"#f0ddb3"});
+const a=document.createElement("a");a.download="November-2026-"+name.value.trim().replace(/[^a-z0-9]/gi,"-")+".png";a.href=canvas.toDataURL("image/png",1);a.click();
+};
+$("pdf").onclick=async()=>{
+if(!eligible())return;
+const canvas=await html2canvas($("certificate"),{scale:4,useCORS:true,backgroundColor:"#f0ddb3"});
+const pdf=new jspdf.jsPDF({orientation:"landscape",unit:"mm",format:"a4",compress:true});
+pdf.addImage(canvas.toDataURL("image/png",1),"PNG",0,0,297,210,undefined,"FAST");
+pdf.save("November-2026-"+name.value.trim().replace(/[^a-z0-9]/gi,"-")+".pdf");
+};
+$("print").onclick=()=>{if(eligible())window.print()};
+updateName();update();setInterval(update,1000);
+})();
+</script>
+</body>
+</html>
